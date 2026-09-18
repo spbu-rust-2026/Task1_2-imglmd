@@ -4,9 +4,19 @@ fn main() {
     let mut sum: i128 = 0;
     loop {
         let mut line = String::new();
-        io::stdin().read_line(&mut line).unwrap();
+        let bytes_read = io::stdin().read_line(&mut line).unwrap();
 
-        let num: i128 = match line.trim().parse() {
+        if bytes_read == 0 {
+            break;
+        }
+
+        let line = line.trim();
+
+        if line.is_empty() {
+            continue;
+        }
+
+        let num: i128 = match line.parse() {
             Ok(n) => n,
             Err(_) => {
                 println!("NaN");
