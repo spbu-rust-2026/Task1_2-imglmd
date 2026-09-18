@@ -23,5 +23,4 @@ fn main() {
         sum += num
     }
     println!("{}", sum)
-
 }
